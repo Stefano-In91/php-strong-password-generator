@@ -14,15 +14,16 @@
   ];
 
   if( !empty($psw_length) ) {
-    $new_pw = "";
+    $new_pw = [];
     for ($i = 0; $i < $psw_length; $i++ ) {
       // randomizzazione tipo di carattere
       $random_type = $psw_characters[rand(0, count($psw_characters)-1)];
       // randomizzazione carattere in tipo selezionato
       $random_character = $random_type[rand(0, count($random_type)-1)];
-      $new_pw .= $random_character;
+      $new_pw[] = $random_character;
     };
-    var_dump($new_pw);
+
+    var_dump(implode($new_pw));
   };
 ?>
 
