@@ -1,4 +1,7 @@
 <?php 
+  session_start();  
+  $_SESSION["name"] = "Scabaruggiolo";
+
   include_once __DIR__ . "/functions.php";
   include_once __DIR__ . "/database.php";
 
@@ -7,6 +10,11 @@
 
   if( !empty($psw_length) ) {
     $new_psw = generate_psw($psw_length, $psw_characters);
+
+    $_SESSION["pw"] = $new_psw;
+
+    header("Location: http://localhost/php-strong-password-generator/display.php");
+    die();
   }
 ?>
 
@@ -25,8 +33,5 @@
       <input  id="psw_length" name="psw_length" type="number" min="3" max="20" placeholder="3 >= num <= 20">
       <button>Invia</button>
     </form>
-    <?php if( !empty($psw_length)) {?>
-      <h1> <?php echo $new_psw ?> </h1>
-    <?php }?>
   </body>
 </html>
